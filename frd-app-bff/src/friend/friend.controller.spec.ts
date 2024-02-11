@@ -5,7 +5,7 @@ import { CACHE_MANAGER, CacheModule } from '@nestjs/cache-manager';
 import { ConfigModule } from '@nestjs/config';
 
 describe('FriendController', () => {
-  // let controller: FriendController;
+  let controller: FriendController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -32,10 +32,8 @@ describe('FriendController', () => {
         },
       ],
     }).compile();
-
-    console.log(module);
-
-    // controller = module.get<FriendController>(FriendController);
+    controller = module.get<FriendController>(FriendController);
+    console.log(controller);
   });
 
   it('should be defined', () => {
