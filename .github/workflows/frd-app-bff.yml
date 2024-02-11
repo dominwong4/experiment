@@ -23,8 +23,8 @@ jobs:
           touch .env
           echo "BASE_API_ENDPOINT=${{ secrets.BASE_API_ENDPOINT }}" >> .env
           echo "BASE_API_KEY=${{ secrets.BASE_API_KEY }}" >> .env
-          echo "REDIS_HOST=${{ secrets.DB_HOST }}" >> .env
-          echo "REDIS_PORT=${{ secrets.DB_PORT }}" >> .env
+          echo "REDIS_HOST=${{ secrets.REDIS_HOST }}" >> .env
+          echo "REDIS_PORT=${{ secrets.REDIS_PORT }}" >> .env
         working-directory: frd-app-bff
 
       - name: Install Dependencies
