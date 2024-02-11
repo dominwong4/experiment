@@ -1,5 +1,9 @@
 import { Module } from '@nestjs/common';
-import { PrometheusModule, makeCounterProvider, makeSummaryProvider } from '@willsoto/nestjs-prometheus';
+import {
+  PrometheusModule,
+  makeCounterProvider,
+  makeSummaryProvider,
+} from '@willsoto/nestjs-prometheus';
 import { ConfigModule } from '@nestjs/config';
 import { CacheModule } from '@nestjs/cache-manager';
 import { RedisOptions } from './configs/cache.constants';
@@ -15,10 +19,11 @@ import { ErrorsInterceptor } from './interceptors/errors.interceptor';
     PrometheusModule.register(),
     ConfigModule.forRoot({ isGlobal: true }),
     CacheModule.registerAsync(RedisOptions),
-    FriendModule
+    FriendModule,
   ],
   controllers: [FriendController],
-  providers: [FriendService,
+  providers: [
+    FriendService,
     {
       provide: APP_INTERCEPTOR,
       useClass: ErrorsInterceptor,
@@ -36,6 +41,7 @@ import { ErrorsInterceptor } from './interceptors/errors.interceptor';
       name: 'http_request_duration_seconds',
       help: 'Duration of HTTP requests in seconds',
       labelNames: ['method', 'route', 'code'],
-    })],
+    }),
+  ],
 })
 export class AppModule {}

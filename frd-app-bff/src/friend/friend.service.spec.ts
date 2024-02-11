@@ -9,18 +9,27 @@ describe('FriendService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports:[CacheModule.register({isGlobal:true, store:'memory'}), ConfigModule.forRoot({
-        isGlobal:true,
-        envFilePath:'.env'
-      })],
-      providers: [FriendService,{ provide: CACHE_MANAGER, useValue: {
-          get: jest.fn(),
-          set: jest.fn(),
-          store:{
+      imports: [
+        CacheModule.register({ isGlobal: true, store: 'memory' }),
+        ConfigModule.forRoot({
+          isGlobal: true,
+          envFilePath: '.env',
+        }),
+      ],
+      providers: [
+        FriendService,
+        {
+          provide: CACHE_MANAGER,
+          useValue: {
             get: jest.fn(),
             set: jest.fn(),
-          }
-      } }],
+            store: {
+              get: jest.fn(),
+              set: jest.fn(),
+            },
+          },
+        },
+      ],
     }).compile();
 
     service = module.get<FriendService>(FriendService);
@@ -37,7 +46,6 @@ describe('FriendService', () => {
     expect(friends).toBeInstanceOf(Array);
     friend = friends[0];
   });
-
 
   it('should return a friends', async () => {
     const friendResult = await service.getFriendById(friend._id);

@@ -16,8 +16,6 @@ describe('AppController (e2e)', () => {
   });
 
   it('/friends (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/friends')
-      .expect(200)
+    return request(app.getHttpServer()).get('/friends').expect(200);
   });
 });

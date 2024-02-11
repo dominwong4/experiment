@@ -7,34 +7,38 @@ import type { Friend } from './friend.interface';
 
 @Injectable()
 export class FriendService {
-    private readonly redisStore!: RedisStore;
-    constructor(@Inject(CACHE_MANAGER) private readonly cache: Cache) {
-      this.redisStore = this.cache.store as unknown as RedisStore;
-    }
-    async getFirendsData(): Promise<Array<Friend>> {
-        const cachedData = await this.redisStore.get('friends', {}, null);
-        if(cachedData) return cachedData;
-        
-        try{
-            const response = await axios.get(process.env.BASE_API_ENDPOINT,{
-                headers:{
-                    Authorization: `Bearer ${process.env.BASE_API_KEY}`
-                }
-            })
-            if(response.data){
-                await this.redisStore.set('friends', response.data, {
-                    ttl:30
-                }, null);
+  private readonly redisStore!: RedisStore;
+  constructor(@Inject(CACHE_MANAGER) private readonly cache: Cache) {
+    this.redisStore = this.cache.store as unknown as RedisStore;
+  }
+  async getFirendsData(): Promise<Array<Friend>> {
+    const cachedData = await this.redisStore.get('friends', {}, null);
+    if (cachedData) return cachedData;
 
-            }
-            return response.data;
-        }catch (e){
-            console.log(e)
-        }
+    try {
+      const response = await axios.get(process.env.BASE_API_ENDPOINT, {
+        headers: {
+          Authorization: `Bearer ${process.env.BASE_API_KEY}`,
+        },
+      });
+      if (response.data) {
+        await this.redisStore.set(
+          'friends',
+          response.data,
+          {
+            ttl: 30,
+          },
+          null,
+        );
+      }
+      return response.data;
+    } catch (e) {
+      console.log(e);
     }
-    async getFriendById(id: string): Promise<Friend> {
-        const firends = await this.getFirendsData()
-        const firend = firends.find(friend=>friend._id == id);
-        return firend
-    }
+  }
+  async getFriendById(id: string): Promise<Friend> {
+    const firends = await this.getFirendsData();
+    const firend = firends.find((friend) => friend._id == id);
+    return firend;
+  }
 }
