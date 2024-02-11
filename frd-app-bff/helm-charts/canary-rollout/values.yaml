@@ -1,0 +1,10 @@
+appName: frd-app-bff-canary-rollout-helm-chart-app
+replicaCount: 2
+
+namespace: default
+
+ingressClassName: external-ingress-nginx
+
+image:
+  name: dominwong4/frd-app-bff
+  tag: v3
