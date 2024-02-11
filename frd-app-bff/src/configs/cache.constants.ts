@@ -10,7 +10,6 @@ export const RedisOptions: CacheModuleAsyncOptions = {
       console.log("Inside RedisOptions")
       const store = await redisStore({
         socket: {
-            // Not sure how you set configuration for now
         //   host: configService.get<string>('REDIS_HOST'),
         //   port: parseInt(configService.get<string>('REDIS_PORT')!),
             host: 'redis',

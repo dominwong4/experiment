@@ -36,6 +36,5 @@ export class FriendService {
         const firends = await this.getFirendsData()
         const firend = firends.find(friend=>friend._id == id);
         return firend
-
     }
 }

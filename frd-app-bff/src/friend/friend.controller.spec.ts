@@ -3,27 +3,34 @@ import { FriendController } from './friend.controller';
 import { FriendModule } from './friend.module';
 import { AppModule } from '../app.module';
 import { FriendService } from './friend.service';
+import { CACHE_MANAGER, CacheModule } from '@nestjs/cache-manager';
+import { ConfigModule } from '@nestjs/config';
 
 describe('FriendController', () => {
   let controller: FriendController;
 
-  // beforeEach(async () => {
-  //   const module: TestingModule = await Test.createTestingModule({
-  //     imports:[AppModule, FriendModule],
-  //     controllers: [FriendController],
-  //     providers: [{provide: FriendService, useValue: {
-        
-  //     }}]
-  //   }).compile();
+  beforeEach(async () => {
+    const module: TestingModule = await Test.createTestingModule({
+      imports:[CacheModule.register({isGlobal:true, store:'memory'}), ConfigModule.forRoot({
+        isGlobal:true,
+        envFilePath:'.env'
+      })],
+      providers: [FriendController,FriendService,{ provide: CACHE_MANAGER, useValue: {
+          get: jest.fn(),
+          set: jest.fn(),
+          store:{
+            get: jest.fn(),
+            set: jest.fn(),
+          }
+      } }],
+    }).compile();
 
-  //   controller = module.get<FriendController>(FriendController);
-  // });
-
-  // it('should be defined', () => {
-  //   expect(controller).toBeDefined();
-  // });
+    controller = module.get<FriendController>(FriendController);
+  });
 
   it('should be defined', () => {
     expect(true).toBeTruthy();
   });
+
+  //TBC
 });
