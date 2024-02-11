@@ -7,4 +7,4 @@ ingressClassName: external-ingress-nginx
 
 image:
   name: dominwong4/frd-app-bff
-  tag: v1.0.0
+  tag: b2ccfc5b253e6fcdc0cd71261ee41fb5c26622e4
