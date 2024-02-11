@@ -17,7 +17,7 @@ import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 @Module({
   imports: [
     PrometheusModule.register(),
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({ isGlobal: true,envFilePath: '.env'}),
     CacheModule.registerAsync(RedisOptions),
     FriendModule,
   ],
