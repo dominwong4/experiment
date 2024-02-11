@@ -1,0 +1,60 @@
+name: frd-app-bff CI
+
+on:
+  push:
+    paths:
+      - 'frd-app-bff/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+      
+      # create .env and fill the value from secrets
+      - name: Create .env
+        run: |
+          touch .env
+          echo "BASE_API_ENDPOINT=${{ secrets.BASE_API_ENDPOINT }}" >> .env
+          echo "BASE_API_KEY=${{ secrets.BASE_API_KEY }}" >> .env
+          echo "REDIS_HOST=${{ secrets.DB_HOST }}" >> .env
+          echo "REDIS_PORT=${{ secrets.DB_PORT }}" >> .env
+
+      - run: npm ci
+      - run: npm run lint
+
+      - name: Install Dependencies
+        run: npm i
+        working-directory: fre-app-bff
+      
+      # Sonarcube
+      # Synk
+      # But too much work and credential here , we skip this for now
+
+
+      - name: Build
+        run: npm run build
+        working-directory: frd-app-bff
+      
+      - name: Testing
+        run: npm test
+        working-directory: frd-app-bff
+      
+      - name: Build Docker image
+        run: |
+          docker build -t frd-app-bff:${GITHUB_SHA} .
+          docker tag frd-app-bff:${GITHUB_SHA} frd-app-bff:latest
+        working-directory: frd-app-bff
+      
+      - name: Push Docker image
+        run: |
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker push frd-app-bff:${GITHUB_SHA}
+          docker push frd-app-bff:latest
+        working-directory: frd-app-bff
