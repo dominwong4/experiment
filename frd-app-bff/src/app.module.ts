@@ -13,6 +13,7 @@ import { FriendService } from './friend/friend.service';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { MetricsInterceptor } from './interceptors/metrics.interceptor';
 import { ErrorsInterceptor } from './interceptors/errors.interceptor';
+import { AppController } from './app/app.controller';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { ErrorsInterceptor } from './interceptors/errors.interceptor';
     CacheModule.registerAsync(RedisOptions),
     FriendModule,
   ],
-  controllers: [FriendController],
+  controllers: [FriendController, AppController],
   providers: [
     FriendService,
     {
