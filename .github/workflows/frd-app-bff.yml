@@ -27,7 +27,10 @@ jobs:
           echo "REDIS_PORT=${{ secrets.DB_PORT }}" >> .env
 
       - run: npm ci
+        working-directory: fre-app-bff
+        
       - run: npm run lint
+        working-directory: fre-app-bff
 
       - name: Install Dependencies
         run: npm i
