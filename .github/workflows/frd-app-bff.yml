@@ -52,13 +52,13 @@ jobs:
       
       - name: Build Docker image
         run: |
-          docker build -t frd-app-bff:${GITHUB_SHA} .
-          docker tag frd-app-bff:${GITHUB_SHA} frd-app-bff:latest
+          docker build -t dominwong4/frd-app-bff:${GITHUB_SHA} .
+          docker tag dominwong4/frd-app-bff:${GITHUB_SHA} dominwong4/frd-app-bff:latest
         working-directory: frd-app-bff
       
       - name: Push Docker image
         run: |
           echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker push frd-app-bff:${GITHUB_SHA}
-          docker push frd-app-bff:latest
+          docker push dominwong4/frd-app-bff:${GITHUB_SHA}
+          docker push dominwong4/frd-app-bff:latest
         working-directory: frd-app-bff
