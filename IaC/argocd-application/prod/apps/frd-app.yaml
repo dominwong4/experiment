@@ -5,8 +5,9 @@ metadata:
   name: frd-app
   namespace: argocd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: dominwong4/frd-app:latest
-    argocd-image-updater.argoproj.io/frd-app.update-strategy: digest
+    argocd-image-updater.argoproj.io/image-list: dominwong4/frd-app
+    argocd-image-updater.argoproj.io/frd-app.update-strategy: latest
+    # should not use latest, but demo here
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
