@@ -6,15 +6,24 @@ import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import {useTranslations} from 'next-intl';
 
-//TODO - Add types
-export default function AvatarCard({ friend, showDetailButton = true}: {
+type AvatarCardProps = {
     friend: any,
-    showDetailButton?: boolean
-}) {
+    showDetailButton: true,
+    path: string,
+} | {
+    friend: any,
+    showDetailButton?: false,
+    path?: never,
+}
+
+export default function AvatarCard({ friend, path, showDetailButton}: AvatarCardProps) {
+    const t = useTranslations('Index');
     const router = useRouter();
+
     return (
-        <div key={friend.id} className="flex items-center space-x-2 py-2">
+        <div key={friend.id} className="flex items-center space-x-2 py-2 w-full">
             <Card className={cn("w-full")}>
                 <CardHeader>
                     <Avatar>
@@ -26,13 +35,13 @@ export default function AvatarCard({ friend, showDetailButton = true}: {
                         <Link href={`mailto:${friend?.email}`}>{friend?.email}</Link></CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <p>Location: {`${friend?.location?.latitude}`} {`${friend?.location?.longitude}`}</p>
+                    <p>{t('location')}: {`${friend?.location?.latitude ?? "Unknown"}`} {`${friend?.location?.longitude ?? "Unknown"}`}</p>
                 </CardContent>
                 {showDetailButton && <CardFooter>
                     <Button onClick={()=>{
-                        router.push(`/friends/${friend._id}`);
+                        router.push(path);
                     }}>
-                        View User
+                        {t("viewUser")}
                     </Button>
                 </CardFooter>}
             </Card>

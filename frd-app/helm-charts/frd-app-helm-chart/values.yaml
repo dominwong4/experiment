@@ -1,0 +1,14 @@
+# Default values for express-app-helm-chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+appName: frd-app
+replicaCount: 1
+
+namespace: default
+
+ingressClassName: external-ingress-nginx
+
+image:
+  name: dominwong4/frd-app
+  tag: 0.0.1

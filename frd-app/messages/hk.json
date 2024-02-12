@@ -1,0 +1,12 @@
+{
+    "Language": "語言",
+  "Index": {
+    "title": "首頁",
+    "viewUser": "查看用戶",
+    "friendList": "好友列表",
+    "location": "位置"
+  },
+  "Error": {
+    "unkown": "未知"
+  }
+}

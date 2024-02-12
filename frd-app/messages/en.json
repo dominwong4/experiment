@@ -1,0 +1,12 @@
+{
+    "Language": "Language",
+    "Index": {
+        "title": "Home",
+        "viewUser":"View User",
+        "friendList":"Friend List",
+        "location":"Location"
+    },
+    "Error": {
+        "unkown": "Unkown"
+    }
+}
