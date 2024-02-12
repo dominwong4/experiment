@@ -46,7 +46,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t dominwong4/frd-app:${GITHUB_SHA} .
-          docker tag dominwong4/frd-app:${GITHUB_SHA} dominwong4/frd-app-bff:latest
+          docker tag dominwong4/frd-app:${GITHUB_SHA} dominwong4/frd-app:latest
         working-directory: frd-app
       
       - name: Push Docker image
