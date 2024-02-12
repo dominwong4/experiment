@@ -15,8 +15,8 @@ import { useTranslations } from "next-intl"
 
 export function ModeToggle() {
   const t = useTranslations('Index');
-  const { setTheme } = useTheme()
-
+  const { setTheme } = useTheme();
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
