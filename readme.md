@@ -83,3 +83,7 @@ To achieve production grade level software, we shall use BFF to seperate some ba
 # Brief Architecture Diagram
 
 ![other drawio](https://github.com/dominwong4/experiment/assets/13159792/358b79de-8db4-4b7f-a2d0-a1cfd92faa14)
+
+
+# Grafana connection Successful screenshot
+<img width="1340" alt="image" src="https://github.com/dominwong4/experiment/assets/13159792/6e013dfb-0216-4b31-8804-5c9a6a7682ba">
