@@ -87,3 +87,7 @@ To achieve production grade level software, we shall use BFF to seperate some ba
 
 # Grafana connection Successful screenshot
 <img width="1340" alt="image" src="https://github.com/dominwong4/experiment/assets/13159792/6e013dfb-0216-4b31-8804-5c9a6a7682ba">
+
+# Argocd Screenshot
+<img width="1337" alt="image" src="https://github.com/dominwong4/experiment/assets/13159792/d15a4d84-ccab-4199-aeda-3bd1b6bcafb5">
+<img width="1591" alt="image" src="https://github.com/dominwong4/experiment/assets/13159792/2513e1c3-f539-4a26-a6fe-23903aa0bd07">
