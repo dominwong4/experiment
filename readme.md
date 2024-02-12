@@ -76,3 +76,10 @@ Deployed URL: http://ab450e080734442ac9a279c0d5ee1229-eefdb1123c043a62.elb.ap-so
 
 ### Reason behind of building BFF. 
 To achieve production grade level software, we shall use BFF to seperate some backend work to specific backend (which is overkilling in this demo), we can add caching level to maxizmize the perforamance, minimun the expense of using as pay as you go API calling, and sometime we need specific authorization & data aggreating.
+
+
+
+
+# Brief Architecture Diagram
+
+![other drawio](https://github.com/dominwong4/experiment/assets/13159792/358b79de-8db4-4b7f-a2d0-a1cfd92faa14)
