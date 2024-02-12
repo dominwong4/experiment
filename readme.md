@@ -75,7 +75,7 @@ CachingL Redis
 Deployed URL: http://ab450e080734442ac9a279c0d5ee1229-eefdb1123c043a62.elb.ap-southeast-1.amazonaws.com/api/friends
 
 ### Reason behind of building BFF. 
-To achieve production grade level software, we shall use BFF to seperate some backend work to specific backend (which is overkilling in this demo), we can add caching level to maxizmize the perforamance, minimun the expense of using as pay as you go API calling, and sometime we need specific authorization & data aggreating.
+To achieve production grade level software, we shall use BFF to seperate some backend work to specific backend (which is overkilling in this demo), we can add caching level to maxizmize the perforamance, minimun the expense of using as pay as you go API calling, and sometime we need specific authorization & data aggregating.
 
 
 
