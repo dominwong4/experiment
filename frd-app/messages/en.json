@@ -4,7 +4,10 @@
         "title": "Home",
         "viewUser":"View User",
         "friendList":"Friend List",
-        "location":"Location"
+        "location":"Location",
+        "light":"Light",
+        "dark":"Dark",
+        "system":"System"
     },
     "Error": {
         "unkown": "Unkown"

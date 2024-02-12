@@ -4,7 +4,10 @@
     "title": "首頁",
     "viewUser": "查看用戶",
     "friendList": "好友列表",
-    "location": "位置"
+    "location": "位置",
+    "light":"亮",
+    "dark":"暗",
+    "system":"系統"
   },
   "Error": {
     "unkown": "未知"
