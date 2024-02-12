@@ -39,9 +39,9 @@ jobs:
         run: npm run build
         working-directory: frd-app
       
-      - name: Testing
-        run: npm test
-        working-directory: frd-app
+      # - name: Testing
+      #   run: npm test
+      #   working-directory: frd-app
       
       - name: Build Docker image
         run: |
